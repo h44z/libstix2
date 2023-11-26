@@ -8,6 +8,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/freetaxii/libstix2/objects/extensiondefinition"
 
 	"github.com/freetaxii/libstix2/objects/attackpattern"
 	"github.com/freetaxii/libstix2/objects/bundle"
@@ -55,6 +56,7 @@ func main() {
 	sm.AddObject(threatactor.New())
 	sm.AddObject(tool.New())
 	sm.AddObject(vulnerability.New())
+	sm.AddObject(extensiondefinition.New())
 
 	var data []byte
 	data, _ = json.MarshalIndent(sm, "", "    ")

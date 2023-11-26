@@ -53,7 +53,7 @@ itself, and the media type that this specific version of the object is available
 in.
 */
 type ManifestRecord struct {
-	objects.IDProperty
+	objects.CommonObjectProperties
 	DateAdded string `json:"date_added,omitempty"`
 	Version   string `json:"version,omitempty"`
 	MediaType string `json:"media_type,omitempty"`

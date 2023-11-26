@@ -97,5 +97,5 @@ func (o *Indicator) Valid(debug bool) (bool, int, []string) {
 		resultDetails = append(resultDetails, str)
 	}
 
-	return true, 0, resultDetails
+	return problemsFound == 0, problemsFound, resultDetails
 }

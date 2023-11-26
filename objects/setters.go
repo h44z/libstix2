@@ -5,7 +5,7 @@
 
 package objects
 
-import "github.com/pborman/uuid"
+import "github.com/google/uuid"
 
 // ----------------------------------------------------------------------
 // Public Methods - DatastoreIDProperty - Setters
@@ -76,7 +76,7 @@ func (o *CommonObjectProperties) GetSpecVersion() string {
 // format.
 func (o *CommonObjectProperties) CreateSTIXUUID(s string) (string, error) {
 	// TODO add check to validate that s is a valid type
-	id := s + "--" + uuid.New()
+	id := s + "--" + uuid.New().String()
 	return id, nil
 }
 
@@ -84,7 +84,7 @@ func (o *CommonObjectProperties) CreateSTIXUUID(s string) (string, error) {
 // create a new ID based on the approved TAXII UUIDv4 format.
 func (o *CommonObjectProperties) CreateTAXIIUUID() (string, error) {
 	id := uuid.New()
-	return id, nil
+	return id.String(), nil
 }
 
 // SetNewTAXIIID - This method does not take in any parameters. It is used to

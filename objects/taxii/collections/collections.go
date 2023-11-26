@@ -74,7 +74,7 @@ type Collection struct {
 	Enabled     bool   `json:"-"`
 	Hidden      bool   `json:"-"`
 	Size        int    `json:"-"`
-	objects.IDProperty
+	objects.CommonObjectProperties
 	objects.TitleProperty
 	objects.DescriptionProperty
 	CanRead    bool     `json:"can_read"`

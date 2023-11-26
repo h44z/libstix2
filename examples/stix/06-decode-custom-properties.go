@@ -16,7 +16,7 @@ func main() {
 
 	// Decode the data defined down below with the custom property data being
 	// stored in a map that is called "custom"
-	o, err := attackpattern.Decode([]byte(getdata()))
+	o, err := attackpattern.Decode([]byte(getCustomPropertyData()))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -35,7 +35,7 @@ func main() {
 
 }
 
-func getdata() string {
+func getCustomPropertyData() string {
 	s := `
 {
 	"type": "attack-pattern",

@@ -7,6 +7,7 @@ package bundle
 
 import (
 	"encoding/json"
+	"github.com/freetaxii/libstix2/objects/extensiondefinition"
 	"io"
 
 	"github.com/freetaxii/libstix2/objects"
@@ -165,6 +166,13 @@ func Decode(r io.Reader) (*Bundle, []error) {
 			b.AddObject(obj)
 		case "vulnerability":
 			obj, err := vulnerability.Decode(v)
+			if err != nil {
+				allErrors = append(allErrors, err)
+				continue
+			}
+			b.AddObject(obj)
+		case "extension-definition":
+			obj, err := extensiondefinition.Decode(v)
 			if err != nil {
 				allErrors = append(allErrors, err)
 				continue

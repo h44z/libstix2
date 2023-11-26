@@ -25,7 +25,7 @@ func main() {
 	fmt.Println("Step 1: Print a basic attack pattern created in this script")
 	fmt.Println(data)
 
-	o1, err := attackpattern.Decode([]byte(getdata()))
+	o1, err := attackpattern.Decode([]byte(getAttackPatterndata()))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -39,7 +39,7 @@ func main() {
 
 }
 
-func getdata() string {
+func getAttackPatterndata() string {
 	s := `
 {
 	"type": "attack-pattern",

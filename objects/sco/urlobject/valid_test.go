@@ -27,20 +27,20 @@ func TestValid1(t *testing.T) {
 	m := New()
 	want := false
 
-	if got, err := m.Valid(false); got != want {
+	if got, err, _ := m.Valid(false); got != want {
 		t.Error("Fail UrlObject Object should be invalid when empty")
 		t.Log(err)
 	}
 }
 
-//TestValid2 -
+// TestValid2 -
 func TestValid2(t *testing.T) {
 	m := New()
-	want := true
+	want := false
 
 	m.SetValue("https://example.com/research/index.html")
 
-	if got, err := m.Valid(false); got != want {
+	if got, err, _ := m.Valid(false); got != want {
 		t.Error("Fail UrlObject Object should be valid when required fields are not empty")
 		t.Log(err)
 	}

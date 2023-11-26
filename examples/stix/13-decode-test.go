@@ -7,17 +7,16 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
-	"github.com/freetaxii/libstix2/objects"
 	"github.com/freetaxii/libstix2/objects/bundle"
-	"github.com/gologme/log"
 )
 
 func main() {
-	data := getdata()
+	data := getDecodedata()
 
-	b, err := bundle.DecodeRaw(strings.NewReader(data))
+	b, err := bundle.Decode(strings.NewReader(data))
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -25,14 +24,7 @@ func main() {
 	count := 0
 	for _, v := range b.Objects {
 
-		o, err := objects.Decode(v)
-		if err != nil {
-			fmt.Println("ERROR:", err)
-			continue
-		}
-		if o == nil {
-			continue
-		}
+		o := v.GetCommonProperties()
 
 		fmt.Printf("Type: %s\t\tID: %s\tVersion: %s\n", o.GetObjectType(), o.GetID(), o.GetModified())
 		fmt.Println(o, "\n")
@@ -43,7 +35,7 @@ func main() {
 
 }
 
-func getdata() string {
+func getDecodedata() string {
 	s := `
 {
     "type": "bundle",

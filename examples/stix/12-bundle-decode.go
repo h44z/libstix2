@@ -7,15 +7,15 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/freetaxii/libstix2/objects/bundle"
 	"github.com/freetaxii/libstix2/objects/indicator"
-	"github.com/gologme/log"
 )
 
 func main() {
-	data := getdata()
+	data := getBundleData()
 
 	b, err := bundle.Decode(strings.NewReader(data))
 	if err != nil {
@@ -28,7 +28,7 @@ func main() {
 	count := 0
 	for _, v := range b.Objects {
 
-		fmt.Printf("Type: %s\t\tID: %s\n", v.TypeProperty.ObjectType, v.IDProperty.ID)
+		fmt.Printf("Type: %s\t\tID: %s\n", v.GetCommonProperties().ObjectType, v.GetCommonProperties().ID)
 
 		switch obj := v.(type) {
 		case *indicator.Indicator:
@@ -43,7 +43,7 @@ func main() {
 
 }
 
-func getdata() string {
+func getBundleData() string {
 	s := `
 {
     "type": "bundle",
